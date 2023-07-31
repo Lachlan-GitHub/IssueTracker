@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Issue Tracker</title>
+    <style>
+        body{
+            background-image: url("/static/images/loginbg.jpg");
+            background-repeat: no-repeat;
+	        background-size: cover;
+            padding: 0;
+            margin: 0;
+        }
+        .logo{
+            height: 10%;
+            border-radius: 50%;
+            position: absolute;
+            top: 25%;
+            left: 47.5%;
+            transform: translate(0, -50%);
+        }
+        .divInfo{
+            background-color: rgba(0,0,0,0.6);
+            height: 50%;
+            width: 15%;
+            position: absolute;
+            top: 50%;
+            left: 42.5%;
+            transform: translate(0, -50%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1, h3{
+            padding-top: 20%;
+            color: white;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            text-align: center;
+        }
+        .divLogin{
+            background-color: rgba(0, 0, 0, 0.6);
+            height: 6%;
+            width: 60%;
+            position: absolute;
+            top: 70%;
+            left: 20%;
+            transform: translate(0, -50%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .divGitHub{
+            background-color: rgba(0, 0, 0, 0.6);
+            height: 6%;
+            width: 60%;
+            position: absolute;
+            top: 80%;
+            left: 20%;
+            transform: translate(0, -50%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+    <script>
+        if ($('p').css('display') == 'none')
+        {
+            alert("Yeah")
+        }
+        else
+        {
+            alert("Nah")
+        }
+    </script>
+  </head>
+  <body onload="script();">
+    {% if session %}
+    <div class="divInfo">
+        <h1>ISSUE TRACKER</h1>
+        <h3>Welcome {{session.userinfo.name}}</h3>
+        <a href="/issues">
+            <div class="divLogin">View Issues</div>
+        </a>
+        <a href="/logout">
+            <div class="divGitHub">Log Out</div>
+        </a>
+    </div>
+    <img class="logo" src="/static/images/logo.jpg" alt="logo">
+    {% else %}
+    <div class="divInfo">
+        <h1>ISSUE TRACKER</h1>
+        <a href="/login">
+            <div class="divLogin">Log In</div>
+        </a>
+        <a href="https://github.com/Lachlan-GitHub">
+            <div class="divGitHub">My GitHub</div>
+        </a>
+    </div>
+    <img class="logo" src="/static/images/logo.jpg" alt="logo">
+    {% endif %}
+  </body>
+</html>
