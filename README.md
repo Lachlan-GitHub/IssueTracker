@@ -16,4 +16,7 @@ To run this website locally:
 7. Scroll down to the 'Configure your .env file' heading and copy the code into a file named '.env' in your project repository.
 8. Generate a secret key with [this](https://stackoverflow.com/questions/60738514/openssl-rand-base64-32-what-is-the-equivalent-in-python#:~:text=11-,In%20python%203.6%2B%3A,-from%20secrets%20import) code and paste it into the .env file.
 9. Navigate to the 'Settings' tab and paste ```http://127.0.0.1:5000/callback``` into the 'Allowed Callback URLs' box, as well as ```http://127.0.0.1:5000``` into the 'Allowed Logout URLs' box. Save the changes.
-10. Return to the console in VS code and run the website with: ```python -m flask run```.
+10. Setup the PostgreSQL server by following [this](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/) guide.
+11. Open pgAdmin, expand the tabs on the left until you see 'databases, right click it and create a new database named 'issuetracker'. Under the SQL tab, paste all the text from /documentation/1-TestData.sql.
+------------- UNFINISHED
+13. Return to the console in VS code and run the website with: ```python -m flask run```.
