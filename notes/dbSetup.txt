@@ -1,2 +1,0 @@
-Set Up a PostgreSQL Database on Windows
-https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL.htm
