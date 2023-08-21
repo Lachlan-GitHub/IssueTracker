@@ -1,0 +1,4 @@
+When database connection fails:
+ - postgres -D D:\Programs\PostgreSQL\15\data
+ - Try the command line tool for more detailed error (psql)
+ - https://stackoverflow.com/questions/37307346/is-the-server-running-on-host-localhost-1-and-accepting-tcp-ip-connections
