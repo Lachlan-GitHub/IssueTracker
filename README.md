@@ -13,7 +13,7 @@ Info here
 9. Navigate to the 'Settings' tab and paste ```http://127.0.0.1:5000/callback``` into the 'Allowed Callback URLs' box, as well as ```http://127.0.0.1:5000``` into the 'Allowed Logout URLs' box. Save the changes.
 10. Setup the PostgreSQL server by following [this guide](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/).
 11. Open pgAdmin and connect to the PostgreSQL server. If the connection times out you may need to open a cmd windows as admin and enter ```net start postgresql-x64-15```.
-12. Expand the tabs on the left until you see 'databases'. Right click it and create a new database named 'issuetracker'.
+12. Right click 'Databases' and create a new database named 'issuetracker'.
 13. Right click the new database and click 'restore'. Load ```/documentation/TestData.sql```. You may need to right click the database and refresh it after it restores.
 14. Open the .env file and paste the following (edit if your values differ):
 ```
