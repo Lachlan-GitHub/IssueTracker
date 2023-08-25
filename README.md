@@ -1,7 +1,6 @@
 # IssueTracker
 ## Design
-![alt text](https://github.com/Lachlan-GitHub/IssueTracker/blob/main/documentation/DatabaseDesign.png?raw=true)
-![alt text](https://github.com/Lachlan-GitHub/IssueTracker/blob/main/documentation/ProcessFlow.png?raw=true)
+![Design Image](https://github.com/Lachlan-GitHub/IssueTracker/blob/main/documentation/DesignImage.png?raw=true)
 
 
 ## Installation - Windows
