@@ -1,12 +1,7 @@
 # IssueTracker
 Info here
 
-## Installation
-The following guide is pulled from:
-- https://code.visualstudio.com/docs/python/tutorial-flask
-- https://auth0.com/docs/quickstart/webapp/python/interactive
-
-To run this website locally:
+## Installation - Windows
 1. Follow these [prerequisites](https://code.visualstudio.com/docs/python/tutorial-flask#:~:text=Q%26A.-,Prerequisites,-To%20successfully%20complete).
 2. Clone this repository and open it inside [VS Code](https://code.visualstudio.com/).
 3. In VS Code, open the Command Palette (View > Command Palette). Then select the 'Python: Create Environment' command to create a virtual environment in your workspace. Select venv and then the Python environment you want to use to create it. Also select requirements.txt once it asks you if you want to install other dependencies.
@@ -17,6 +12,15 @@ To run this website locally:
 8. Generate a secret key with [this](https://stackoverflow.com/questions/60738514/openssl-rand-base64-32-what-is-the-equivalent-in-python#:~:text=11-,In%20python%203.6%2B%3A,-from%20secrets%20import) code and paste it into the .env file.
 9. Navigate to the 'Settings' tab and paste ```http://127.0.0.1:5000/callback``` into the 'Allowed Callback URLs' box, as well as ```http://127.0.0.1:5000``` into the 'Allowed Logout URLs' box. Save the changes.
 10. Setup the PostgreSQL server by following [this](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/) guide.
-11. Open pgAdmin, expand the tabs on the left until you see 'databases, right click it and create a new database named 'issuetracker'. Under the SQL tab, paste all the text from /documentation/1-TestData.sql.
-------------- UNFINISHED
-13. Return to the console in VS code and run the website with: ```python -m flask run```.
+11. Open pgAdmin and connect to the PostgreSQL server. If the connection times out you may need to open a cmd windows as admin and enter ```net start postgresql-x64-15```.
+12. Expand the tabs on the left until you see 'databases'. Right click it and create a new database named 'issuetracker'.
+13. Right click the new database and click 'restore'. Load ```/documentation/TestData.sql```. You may need to right click the database and refresh it after it restores.
+14. Open the .env file and paste the following (edit if your values differ):
+```
+DATABASE=issuetracker
+USER=postgres
+PASSWORD=password
+HOST=localhost
+PORT=5432
+```
+15. Return to the console in VS code and run the website with: ```python -m flask run```. If the .venv terminal closes then go to view > command palette > Terminal: Create new terminal.
