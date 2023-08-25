@@ -1,5 +1,8 @@
 # IssueTracker
-Info here
+## Design
+![alt text](https://github.com/Lachlan-GitHub/IssueTracker/blob/main/documentation/DatabaseDesign.png?raw=true)
+![alt text](https://github.com/Lachlan-GitHub/IssueTracker/blob/main/documentation/ProcessFlow.png?raw=true)
+
 
 ## Installation - Windows
 1. [Prerequisites](https://code.visualstudio.com/docs/python/tutorial-flask#:~:text=Q%26A.-,Prerequisites,-To%20successfully%20complete).
