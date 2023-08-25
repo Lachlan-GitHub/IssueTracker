@@ -15,7 +15,7 @@ Info here
 11. Open pgAdmin and connect to the PostgreSQL server. If the connection times out you may need to open a cmd windows as admin and enter ```net start postgresql-x64-15```.
 12. Right click 'Databases' and create a new database named 'issuetracker'.
 13. Right click the new database and click 'Restore'. Load ```/documentation/TestData.sql```. You may need to right click the database and refresh it after it restores to see the data.
-14. Open the .env file and paste the following (edit if your values differ):
+14. Open the .env file and paste the following text and edit it if your values differ:
 ```
 DATABASE=issuetracker
 USER=postgres
@@ -23,4 +23,4 @@ PASSWORD=password
 HOST=localhost
 PORT=5432
 ```
-15. Return to the console in VS code and run the website with: ```python -m flask run```. If the .venv terminal closes then go to view > command palette > Terminal: Create new terminal.
+15. Return to the console in VS code and run the website with: ```python -m flask run```.
