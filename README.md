@@ -14,7 +14,7 @@ Info here
 10. Setup the PostgreSQL server by following [this guide](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/).
 11. Open pgAdmin and connect to the PostgreSQL server. If the connection times out you may need to open a cmd windows as admin and enter ```net start postgresql-x64-15```.
 12. Right click 'Databases' and create a new database named 'issuetracker'.
-13. Right click the new database and click 'restore'. Load ```/documentation/TestData.sql```. You may need to right click the database and refresh it after it restores.
+13. Right click the new database and click 'Restore'. Load ```/documentation/TestData.sql```. You may need to right click the database and refresh it after it restores to see the data.
 14. Open the .env file and paste the following (edit if your values differ):
 ```
 DATABASE=issuetracker
