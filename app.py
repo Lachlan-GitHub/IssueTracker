@@ -54,7 +54,7 @@ def logout():
 def home():
     return render_template("home.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
-@app.route("/issues", methods=['POST'])
+@app.route("/issues", methods=['GET', 'POST'])
 def issues():
     conn = psycopg2.connect(database=env.get("DATABASE"), user=env.get("USER"), password=env.get("PASSWORD"), host=env.get("HOST"), port=env.get("PORT"))
     cur = conn.cursor()
@@ -65,6 +65,8 @@ def issues():
                 AND issues.tester_id = E2.id
                 ORDER BY {0} '''
     orderBy = request.form.get("textField")
+    if orderBy == None:
+        orderBy = "issues.id"
     query = query.format(orderBy)
     cur.execute(query)
     data = cur.fetchall()

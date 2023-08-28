@@ -47,7 +47,7 @@
             }
         </style>
         <script>
-            function onTableClick()
+            document.addEventListener("DOMContentLoaded", function(e)
             {
                 var row = document.getElementById("issuesTable").rows[0];
                 row.onclick = (function (e)
@@ -59,7 +59,8 @@
                         index++;
                     }
                     document.getElementById("sortByField").value = row.cells[index].innerHTML;
-                    switch(row.cells[index].innerHTML) {
+                    switch(row.cells[index].innerHTML)
+                    {
                         case "ID":
                             document.getElementById("sortByField").value = "issues.id"
                             break;
@@ -89,12 +90,10 @@
                             break;
                         default:
                             document.getElementById("sortByField").value = "issues.id"
-                        }
-
+                    }
                     document.sortForm.submit();
                 });
-            }
-            
+            });
         </script>
     </head>
     <body>
@@ -108,7 +107,7 @@
                 <img class = "settings" src = "/static/images/settings.png" alt = "SETTINGS">
             </a>
         </div>
-        <table class = "issues" id = "issuesTable" onclick="onTableClick()">
+        <table class = "issues" id = "issuesTable">
             <tr>
                 <th>ID</th>
                 <th>Project</th>
