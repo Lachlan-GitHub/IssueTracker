@@ -56,6 +56,10 @@ def home():
 
 @app.route("/issues", methods=['GET', 'POST'])
 def issues():
+    orderByWhitelist = ["issues.id", "projects.name", "issues.title", "issues.status", "issues.priority", "issues.date", "issues.target_date", "E1.name", "E2.name", "issues.id"]
+    orderBy = request.form.get("orderByTextField")
+    if orderBy not in orderByWhitelist:
+        orderBy = "issues.id"
     conn = psycopg2.connect(database=env.get("DATABASE"), user=env.get("USER"), password=env.get("PASSWORD"), host=env.get("HOST"), port=env.get("PORT"))
     cur = conn.cursor()
     query = ''' SELECT issues.id, projects.name, issues.title, issues.status, issues.priority, issues.date, issues.target_date, E1.name, E2.name
@@ -64,9 +68,6 @@ def issues():
                 AND issues.developer_id = E1.id
                 AND issues.tester_id = E2.id
                 ORDER BY {0} '''
-    orderBy = request.form.get("textField")
-    if orderBy == None:
-        orderBy = "issues.id"
     query = query.format(orderBy)
     cur.execute(query)
     data = cur.fetchall()
