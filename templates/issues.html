@@ -42,7 +42,60 @@
                 width: 81%;
                 text-align: center;
             }
+            form{
+                visibility: hidden;
+            }
         </style>
+        <script>
+            function onTableClick()
+            {
+                var row = document.getElementById("issuesTable").rows[0];
+                row.onclick = (function (e)
+                {
+                    var index = 0;
+                    var data = e.target;
+                    while((data = data.previousElementSibling) != null )
+                    {
+                        index++;
+                    }
+                    document.getElementById("sortByField").value = row.cells[index].innerHTML;
+                    switch(row.cells[index].innerHTML) {
+                        case "ID":
+                            document.getElementById("sortByField").value = "issues.id"
+                            break;
+                        case "Project":
+                            document.getElementById("sortByField").value = "projects.name"
+                            break;
+                        case "Title":
+                            document.getElementById("sortByField").value = "issues.title"
+                            break;
+                        case "Status":
+                            document.getElementById("sortByField").value = "issues.status"
+                            break;
+                        case "Priority":
+                            document.getElementById("sortByField").value = "issues.priority"
+                            break;
+                        case "Date Created":
+                            document.getElementById("sortByField").value = "issues.date"
+                            break;
+                        case "Target Date":
+                            document.getElementById("sortByField").value = "issues.target_date"
+                            break;
+                        case "Assigned To":
+                            document.getElementById("sortByField").value = "E1.name"
+                            break;
+                        case "Created By":
+                            document.getElementById("sortByField").value = "E2.name"
+                            break;
+                        default:
+                            document.getElementById("sortByField").value = "issues.id"
+                        }
+
+                    document.sortForm.submit();
+                });
+            }
+            
+        </script>
     </head>
     <body>
     {% if session %}
@@ -55,7 +108,7 @@
                 <img class = "settings" src = "/static/images/settings.png" alt = "SETTINGS">
             </a>
         </div>
-        <table class = "issues">
+        <table class = "issues" id = "issuesTable" onclick="onTableClick()">
             <tr>
                 <th>ID</th>
                 <th>Project</th>
@@ -75,6 +128,9 @@
             </tr>
         {% endfor %}
         </table>
+        <form action="{{ url_for('issues') }}" method="post" name = "sortForm">
+            <input type="text" name="textField" id = "sortByField">
+        </form>
     {% else %}
         Nah
     {% endif %}
