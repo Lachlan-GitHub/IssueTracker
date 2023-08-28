@@ -58,7 +58,12 @@ def home():
 def issues():
     conn = psycopg2.connect(database=env.get("DATABASE"), user=env.get("USER"), password=env.get("PASSWORD"), host=env.get("HOST"), port=env.get("PORT"))
     cur = conn.cursor()
-    cur.execute('''SELECT * FROM employees''')
+    cur.execute(''' SELECT issues.id, projects.name, issues.title, issues.status, issues.priority, issues.date, issues.target_date, E1.name,
+                        E2.name
+                    FROM issues, projects, employees E1, employees E2
+                    WHERE issues.project_id = projects.id
+                    AND issues.developer_id = E1.id
+                    AND issues.tester_id = E2.id''')
     data = cur.fetchall()
     cur.close()
     conn.close()
