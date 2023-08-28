@@ -63,6 +63,24 @@
                     document.orderByForm.submit();
                 });
             });
+
+            document.addEventListener("DOMContentLoaded", function(e)
+            {
+                var table = document.getElementById("issuesTable");
+                var rows = table.getElementsByTagName("tr");
+                for (i = 1; i < rows.length; i++)
+                {
+                    var currentRow = table.rows[i];
+                    var createClickHandler = function(row)
+                    {
+                        return function()
+                        {
+                            alert(row.getElementsByTagName("td")[0].innerHTML);
+                        };
+                    };
+                    currentRow.onclick = createClickHandler(currentRow);
+                }
+            });
         </script>
     </head>
     <body>
@@ -89,7 +107,7 @@
                 <th>Created By</th>
             </tr>
         {% for row in data %}
-            <tr>
+            <tr">
                 {% for cell in row %}
                     <td>{{ cell }}</td>
                 {% endfor %}
