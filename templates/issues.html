@@ -75,7 +75,8 @@
                     {
                         return function()
                         {
-                            alert(row.getElementsByTagName("td")[0].innerHTML);
+                            document.getElementById("issueId").value = row.getElementsByTagName("td")[0].innerHTML;
+                            document.issueForm.submit();
                         };
                     };
                     currentRow.onclick = createClickHandler(currentRow);
@@ -116,6 +117,9 @@
         </table>
         <form action="{{ url_for('issues') }}" method="post" name = "orderByForm">
             <input type="text" name="orderByTextField" id = "orderBy">
+        </form>
+        <form action="{{ url_for('issue') }}" method="post" name = "issueForm">
+            <input type="text" name="issueIdTextField" id = "issueId">
         </form>
     {% else %}
         Nah

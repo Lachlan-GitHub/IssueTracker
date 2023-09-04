@@ -75,5 +75,20 @@ def issues():
     conn.close()
     return render_template("issues.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), data=data)
 
+@app.route("/issue", methods=['GET', 'POST'])
+def issue():
+    issueId = request.form.get("issueIdTextField")
+    conn = psycopg2.connect(database=env.get("DATABASE"), user=env.get("USER"), password=env.get("PASSWORD"), host=env.get("HOST"), port=env.get("PORT"))
+    cur = conn.cursor()
+    query = ''' SELECT id, title, description, date, tester_id, developer_id, project_id, status, priority, target_date, end_date, solution
+                FROM issues
+                WHERE id = {0} '''
+    query = query.format(issueId)
+    cur.execute(query)
+    data = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template("issue.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4), data=data)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=env.get("PORT", 3000))

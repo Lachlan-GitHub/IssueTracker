@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Issues</title>
+        <style>
+            
+        </style>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+    {% if session %}
+    <table class = "issue" id = "issueTable">
+    {% for row in data %}
+        <tr">
+            {% for cell in row %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    {% else %}
+        Nah
+    {% endif %}
+    </body>
+</html>
