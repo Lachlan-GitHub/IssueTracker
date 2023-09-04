@@ -3,22 +3,178 @@
         <meta charset="utf-8" />
         <title>Issues</title>
         <style>
-            
+            body{
+                background-image: url("/static/images/loginbg.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 0;
+                margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .menu{
+                background-color: rgba(0,0,0,0.6);
+                height: 100%;
+                width: 15%;
+                position: absolute;
+            }
+            h1{
+                color: white;
+                text-align: center;
+            }
+            a{
+                color: inherit;
+                text-decoration:none;
+            } 
+            .logout{
+                height: 5%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+            .settings{
+                height: 5%;
+                position: absolute;
+                left: 83%;
+                bottom: 0;
+            }
+            .title{
+                height: 5%;
+                width: 75%;
+                left: 20%;
+                top: 5%;
+                position: absolute;
+                background-color: rgba(0,0,0,0.6);
+                color: white;
+                text-align: center;
+            }
+            .details{
+                height: 83%;
+                width: 20%;
+                left: 20%;
+                top: 12%;
+                position: absolute;
+                background-color: rgba(0,0,0,0.6);
+                color: white;
+            }
+            .description{
+                height: 40.5%;
+                width: 53%;
+                left: 42%;
+                top: 12%;
+                position: absolute;
+                background-color: rgba(0,0,0,0.6);
+                color: white;
+            }
+            .solution{
+                height: 40.5%;
+                width: 53%;
+                left: 42%;
+                top: 54.5%;
+                position: absolute;
+                background-color: rgba(0,0,0,0.6);
+                color: white;
+            }
         </style>
         <script>
             
         </script>
     </head>
     <body>
-    {% if session %}
-    <table class = "issue" id = "issueTable">
-    {% for row in data %}
-        <tr">
-            {% for cell in row %}
-                <td>{{ cell }}</td>
-            {% endfor %}
-        </tr>
-    {% endfor %}
+        {% if session %}
+        <div class = "menu">
+            <h1><a href = "/issues">ISSUE TRACKER</a></h1>
+            <a href = "/logout">
+                <img class = "logout" src = "/static/images/logout.png" alt = "LOGOUT">
+            </a>
+            <a href = "/settings">
+                <img class = "settings" src = "/static/images/settings.png" alt = "SETTINGS">
+            </a>
+        </div>
+        <div class = "title">
+            <h3>
+                {{ data[0][1] }}
+            </h3>
+        </div>
+        <table class = "details">
+            <tr>
+                <td>
+                    Issue ID - 
+                </td>
+                <td>
+                    {{ data[0][0] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Date Created - 
+                </td>
+                <td>
+                    {{ data[0][3] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tester ID - 
+                </td>
+                <td>
+                    {{ data[0][4] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Developer ID - 
+                </td>
+                <td>
+                    {{ data[0][5] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Project ID - 
+                </td>
+                <td>
+                    {{ data[0][6] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Status - 
+                </td>
+                <td>
+                    {{ data[0][7] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Priority - 
+                </td>
+                <td>
+                    {{ data[0][8] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Target Date - 
+                </td>
+                <td>
+                    {{ data[0][9] }} 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    End Date - 
+                </td>
+                <td>
+                    {{ data[0][10] }} 
+                </td>
+            </tr>
+        </table>
+        <div class = "description">
+            Description - {{ data[0][2] }}
+        </div>
+        <div class = "solution">
+            Solution - {{ data[0][11] }}
+        </div>
     {% else %}
         Nah
     {% endif %}
