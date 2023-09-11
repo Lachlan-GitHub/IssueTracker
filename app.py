@@ -54,12 +54,24 @@ def logout():
 def home():
     return render_template("home.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
 
+orderBy = ""
+ascending = True
 @app.route("/issues", methods=['GET', 'POST'])
 def issues():
+    global orderBy
+    global ascending
     orderByWhitelist = ["issues.id", "projects.name", "issues.title", "issues.status", "issues.priority", "issues.date", "issues.target_date", "E1.name", "E2.name", "issues.id"]
-    orderBy = request.form.get("orderByTextField")
     if orderBy not in orderByWhitelist:
         orderBy = "issues.id"
+    else:
+        if orderBy != request.form.get("orderByTextField"):
+            ascending = True
+        else:
+            if not ascending:
+                orderBy = "issues.id"
+        orderBy = request.form.get("orderByTextField")
+        if orderBy == None:
+            orderBy = "issues.id"
     conn = psycopg2.connect(database=env.get("DATABASE"), user=env.get("USER"), password=env.get("PASSWORD"), host=env.get("HOST"), port=env.get("PORT"))
     cur = conn.cursor()
     query = ''' SELECT issues.id, projects.name, issues.title, issues.status, issues.priority, issues.date, issues.target_date, developers.name, testers.name
@@ -67,8 +79,13 @@ def issues():
                 WHERE issues.project_id = projects.id
                 AND issues.tester_id = testers.id
                 AND issues.developer_id = developers.id
-                ORDER BY {0} '''
-    query = query.format(orderBy)
+                ORDER BY {0} {1} '''
+    if ascending:
+        query = query.format(orderBy, "Asc")
+        ascending = False
+    else:
+        query = query.format(orderBy, "Desc")
+        ascending = True
     cur.execute(query)
     data = cur.fetchall()
     cur.close()
