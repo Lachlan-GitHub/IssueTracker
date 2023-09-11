@@ -63,7 +63,7 @@
                     {
                         index++;
                     }
-                    var orderByOptions = ["issues.id", "projects.name", "issues.title", "issues.status", "issues.priority", "issues.date", "issues.target_date", "E1.name", "E2.name", "issues.id"];
+                    var orderByOptions = ["issues.id", "projects.name", "issues.title", "issues.status", "issues.priority", "issues.date", "issues.target_date", "developers.name", "testers.name"];
                     document.getElementById("orderBy").value = orderByOptions[index];
                     document.orderByForm.submit();
                 });

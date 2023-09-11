@@ -60,7 +60,7 @@ ascending = True
 def issues():
     global orderBy
     global ascending
-    orderByWhitelist = ["issues.id", "projects.name", "issues.title", "issues.status", "issues.priority", "issues.date", "issues.target_date", "E1.name", "E2.name", "issues.id"]
+    orderByWhitelist = ["issues.id", "projects.name", "issues.title", "issues.status", "issues.priority", "issues.date", "issues.target_date", "developers.name", "testers.name", "issues.id"]
     if orderBy not in orderByWhitelist:
         orderBy = "issues.id"
     else:
