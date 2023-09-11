@@ -62,11 +62,11 @@ def issues():
         orderBy = "issues.id"
     conn = psycopg2.connect(database=env.get("DATABASE"), user=env.get("USER"), password=env.get("PASSWORD"), host=env.get("HOST"), port=env.get("PORT"))
     cur = conn.cursor()
-    query = ''' SELECT issues.id, projects.name, issues.title, issues.status, issues.priority, issues.date, issues.target_date, E1.name, E2.name
-                FROM issues, projects, employees E1, employees E2
+    query = ''' SELECT issues.id, projects.name, issues.title, issues.status, issues.priority, issues.date, issues.target_date, developers.name, testers.name
+                FROM issues, projects, employees developers, employees testers
                 WHERE issues.project_id = projects.id
-                AND issues.developer_id = E1.id
-                AND issues.tester_id = E2.id
+                AND issues.tester_id = testers.id
+                AND issues.developer_id = developers.id
                 ORDER BY {0} '''
     query = query.format(orderBy)
     cur.execute(query)
@@ -80,9 +80,12 @@ def issue():
     issueId = request.form.get("issueIdTextField")
     conn = psycopg2.connect(database=env.get("DATABASE"), user=env.get("USER"), password=env.get("PASSWORD"), host=env.get("HOST"), port=env.get("PORT"))
     cur = conn.cursor()
-    query = ''' SELECT id, title, description, date, tester_id, developer_id, project_id, status, priority, target_date, end_date, solution
-                FROM issues
-                WHERE id = {0} '''
+    query = ''' SELECT issues.id, issues.title, issues.description, issues.date, testers.name, developers.name, projects.name, issues.status, issues.priority, issues.target_date, issues.end_date, issues.solution
+                FROM issues, employees testers, employees developers, projects
+                WHERE issues.id = {0}
+                AND issues.tester_id = testers.id
+                AND issues.developer_id = developers.id
+                AND issues.id = projects.id'''
     query = query.format(issueId)
     cur.execute(query)
     data = cur.fetchall()
