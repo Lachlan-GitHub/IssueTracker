@@ -1,0 +1,12 @@
+Admin
+	lachlan_issuetracker@email.com
+	password!123
+Manager
+	bob_issuetracker@email.com
+	password!123
+Developer
+	john_issuetracker@email.com
+	password!123
+Tester
+	mary_issuetracker@email.com
+	password!123
