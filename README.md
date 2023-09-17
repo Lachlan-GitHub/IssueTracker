@@ -26,3 +26,8 @@ HOST=localhost
 PORT=5432
 ```
 15. Return to the console in VS code and run the website with: ```python -m flask run```.
+16. Account setup for testing:
+    - In the Auth0 dashboard:
+        - Applications > Applications > IssueTracker > Connections > Disable 'google-oauth2'
+        - Authentication > Database > Username-Password-Authentication > Disable Sign Ups
+        - User Management > Users > Create User > Create 4 users with the details from ```/documentation/TestUsers.txt```
