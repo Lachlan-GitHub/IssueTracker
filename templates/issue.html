@@ -92,7 +92,7 @@
         </div>
         <div class = "title">
             <h3>
-                {{ data[0][1] }}
+                {{ issueData[0][1] }}
             </h3>
         </div>
         <table class = "details">
@@ -101,7 +101,7 @@
                     Issue ID - 
                 </td>
                 <td>
-                    {{ data[0][0] }} 
+                    {{ issueData[0][0] }} 
                 </td>
             </tr>
             <tr>
@@ -109,7 +109,7 @@
                     Date Created - 
                 </td>
                 <td>
-                    {{ data[0][3] }} 
+                    {{ issueData[0][3] }} 
                 </td>
             </tr>
             <tr>
@@ -117,7 +117,7 @@
                     Tester - 
                 </td>
                 <td>
-                    {{ data[0][4] }} 
+                    {{ issueData[0][4] }} 
                 </td>
             </tr>
             <tr>
@@ -125,7 +125,7 @@
                     Developer - 
                 </td>
                 <td>
-                    {{ data[0][5] }} 
+                    {{ issueData[0][5] }} 
                 </td>
             </tr>
             <tr>
@@ -133,7 +133,7 @@
                     Project - 
                 </td>
                 <td>
-                    {{ data[0][6] }} 
+                    {{ issueData[0][6] }} 
                 </td>
             </tr>
             <tr>
@@ -141,7 +141,7 @@
                     Status - 
                 </td>
                 <td>
-                    {{ data[0][7] }} 
+                    {{ issueData[0][7] }} 
                 </td>
             </tr>
             <tr>
@@ -149,7 +149,7 @@
                     Priority - 
                 </td>
                 <td>
-                    {{ data[0][8] }} 
+                    {{ issueData[0][8] }} 
                 </td>
             </tr>
             <tr>
@@ -157,7 +157,7 @@
                     Target Date - 
                 </td>
                 <td>
-                    {{ data[0][9] }} 
+                    {{ issueData[0][9] }} 
                 </td>
             </tr>
             <tr>
@@ -165,15 +165,15 @@
                     End Date - 
                 </td>
                 <td>
-                    {{ data[0][10] }} 
+                    {{ issueData[0][10] }} 
                 </td>
             </tr>
         </table>
         <div class = "description">
-            Description - {{ data[0][2] }}
+            Description - {{ issueData[0][2] }}
         </div>
         <div class = "solution">
-            Solution - {{ data[0][11] }}
+            Solution - {{ issueData[0][11] }}
         </div>
     {% else %}
         Nah
