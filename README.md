@@ -24,10 +24,14 @@ USER=postgres
 PASSWORD=password
 HOST=localhost
 PORT=5432
+
+AUTH0_API_IDENTIFIER=
 ```
-15. Return to the console in VS code and run the website with: ```python -m flask run```.
+15. Back in the Auth0 dashboard:
+    - Applications > APIs > Copy the audience value and past it next to ```AUTH0_API_IDENTIFIER=```
+    - Auth0 Management API > Machine to Machine Applications > Enable IssueTracker
 16. Account setup for testing:
-    - In the Auth0 dashboard:
-        - Applications > Applications > IssueTracker > Connections > Disable 'google-oauth2'
-        - Authentication > Database > Username-Password-Authentication > Disable Sign Ups
-        - User Management > Users > Create User > Create 4 users with the details from ```/documentation/TestUsers.txt```
+    - Applications > Applications > IssueTracker > Connections > Disable 'google-oauth2'
+    - Authentication > Database > Username-Password-Authentication > Disable Sign Ups
+    - User Management > Users > Create User > Create 4 users with the details from ```/documentation/TestUsers.txt```
+17. Return to the console in VS code and run the website with: ```python -m flask run```.
